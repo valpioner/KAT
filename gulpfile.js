@@ -1,13 +1,13 @@
-var gulp = require('gulp'),
-    browserSync = require('browser-sync'), // live css reload & Browser Sync
-    reload = browserSync.reload; 
+var gulp            = require('gulp'),
+    browserSync     = require('browser-sync'), // auto browser sync
+    reload          = browserSync.reload; 
     //concat = require('gulp-concat'),
-    plumber = require('gulp-plumber'), //prevents from task exit on error, continue instead
-    uglify = require('gulp-uglify'), //minifies
-    rename = require('gulp-rename'),  //rename files
-    autoprefixer = require('gulp-autoprefixer'), // adds vendor prefixes //.pipe(autoprefixer('last 2 versions')) 
-    less = require('gulp-less'),
-    del = require('del'); //delete files/folders using globs
+    plumber         = require('gulp-plumber'), // continue task run on pipe error
+    uglify          = require('gulp-uglify'), // minifies
+    rename          = require('gulp-rename'),
+    autoprefixer    = require('gulp-autoprefixer'), // adds vendor prefixes 
+    less            = require('gulp-less'),
+    del             = require('del'); // delete files/folders using globs
 
     
 
@@ -21,7 +21,7 @@ gulp.task('scripts', function (){
     // .pipe(gulp.dest('app/js'));
 
     gulp.src(['src/js/**/*.js', '!src/js/**/*.min.js'])
-    .pipe(plumber()) // always first pipe
+    .pipe(plumber()) // always first 
     .pipe(rename(({suffix:'.min'})))
     .pipe(uglify())
     .pipe(gulp.dest('src/js'))
@@ -36,7 +36,7 @@ gulp.task('watch', function (){
 
 gulp.task('html', function (){    
     gulp.src('src/**/*.html')
-    .pipe(reload({stream:true}));   //always as last pipe 
+    .pipe(reload({stream:true}));   // always last  
 });
 
 gulp.task('less', function(){
