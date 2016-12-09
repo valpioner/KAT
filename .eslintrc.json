@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": ["error",4],
+        "linebreak-style": ["error","windows" /*"unix"*/],
+        "quotes": ["error","single"],
+        "semi": ["error","always"],
+
+        // override default options for rules from base configurations
+        //"comma-dangle": ["error", "always"],
+        "no-cond-assign": ["error", "always"],
+        "comma-spacing": [1, {"before": false, "after": true}],
+        "no-unused-vars": [1],
+
+        // disable rules from base configurations
+        //0 = off, 1 = warn, 2 = error
+        "no-console": 1,
+        "strict": "off" 
+
+    }
+}
