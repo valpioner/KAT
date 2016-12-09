@@ -1,2 +1,6 @@
 body {
-  background-color: grey; }
+  background-color: blue;
+}
+body #someClass {
+  color: black;
+}
