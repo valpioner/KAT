@@ -11,19 +11,19 @@ var gulp            = require('gulp'),
     less            = require('gulp-less'),
     del             = require('del'); // delete files/folders using globs    
 
-gulp.task('scripts', function (){
-    gulp.src(['src/js/**/*.js', '!src/js/**/*.min.js'])
-    .pipe(plumber()) // always first 
-    .pipe(rename(({suffix:'.min'})))
-    .pipe(uglify())
-    .pipe(gulp.dest('src/js'))
-    .pipe(reload({stream:true}));
-});
-
 gulp.task('watch', function (){
     gulp.watch('src/css/less/**/*.less', ['less']);
     gulp.watch('src/**/*.html', ['html']/*browserSync.reload*/);    
-    gulp.watch('src/js/**/*.js', ['scripts']);    
+    gulp.watch('src/**/*.js', ['scripts']);    
+});
+
+gulp.task('scripts', function (){
+    gulp.src(['src/app/**/*.js', '!src/app/**/*.min.js'])
+    //.pipe(plumber()) // always first 
+    //.pipe(rename(({suffix:'.min'})))
+    //.pipe(uglify())
+    //.pipe(gulp.dest('src/js'))
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('html', function (){    
@@ -32,10 +32,10 @@ gulp.task('html', function (){
 });
 
 gulp.task('less', function(){
-    gulp.src('src/css/less/main.less')
+    gulp.src('src/**/*.less')
     .pipe(less())
     .pipe(autoprefixer('last 5 versions')) 
-    .pipe(gulp.dest('src/css'))
+    .pipe(gulp.dest('src/assets/css'))
     .pipe(browserSync.reload({stream: true}));
 });
 
@@ -64,21 +64,29 @@ gulp.task('default', ['scripts', 'html', 'less', 'browser-sync', 'watch']);
 // build tasks
 
 gulp.task('build:cleanfolder', function (cb){
-    del([
-        'build/**'
-    ], cb);
+    del('dist/**/*');
+    cb();
 });
 
 gulp.task('build:copy', ['build:cleanfolder'], function (){
-    return gulp.src('src/**/*/')
-    .pipe(gulp.dest('build/'));
+    gulp.src('src/**/*')
+    .pipe(gulp.dest('dist/'));
+
+    gulp.src([
+        'bower_components/angular/angular.min.js', 
+        'bower_components/angular-ui-router/angular-ui-router.min.js'
+    ])
+    .pipe(gulp.dest('dist/libs/'));
+
+    return;
 });
 
 gulp.task('build:remove', ['build:copy'], function(cb){
     del([
-        'build/scss/',
-        'build/js/!(*.min.js)'
-    ], cb);
+        'dist/css/less',
+        'dist/app/!(*.min.js)'
+    ]);
+    cb();
 });
 
 gulp.task('build', ['build:copy', 'build:remove']);
