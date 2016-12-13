@@ -6,17 +6,25 @@
     <meta charset="UTF-8">
     <title>kat</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
 
-<body ng-cloak>
+<body ng-cloak ng-controller="mainCtrl as vm">    
 
+    <nav></nav> 
     <div ui-view></div>
     
     <script src="assets/bower_components/angular/angular.min.js"></script>
     <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <script src="app/app.js"></script>
+    <script src="app/mainCtrl.js"></script>
+
+    <script src="app/shared/nav/nav.directive.js"></script>
+    <script src="app/shared/nav/navCtrl.js"></script>
+
     <script src="app/test/testCtrl.js"></script>
     <script src="app/test/testService.js"></script>
 

@@ -7,6 +7,7 @@
 
         // Custom modules 
         //"testService"
+        'app.directives.nav'
 
         // 3rd Party Modules        
     ]);
@@ -26,7 +27,7 @@
             })
             
             // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-            .state('about', {
+            .state('contacts', {
                 // we'll get to this in a bit       
             });
             

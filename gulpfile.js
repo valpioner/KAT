@@ -12,7 +12,7 @@ var gulp            = require('gulp'),
     del             = require('del'); // delete files/folders using globs    
 
 gulp.task('watch', function (){
-    gulp.watch('src/css/less/**/*.less', ['less']);
+    gulp.watch('src/assets/less/**/*.less', ['less']);
     gulp.watch('src/**/*.html', ['html']/*browserSync.reload*/);    
     gulp.watch('src/**/*.js', ['scripts']);    
 });
@@ -32,7 +32,7 @@ gulp.task('html', function (){
 });
 
 gulp.task('less', function(){
-    gulp.src('src/**/*.less')
+    gulp.src('src/assets/less/main.less')
     .pipe(less())
     .pipe(autoprefixer('last 5 versions')) 
     .pipe(gulp.dest('src/assets/css'))

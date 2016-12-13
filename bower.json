@@ -16,6 +16,7 @@
   ],
   "devDependencies": {
     "angular": "^1.6.0",
-    "angular-ui-router": "^0.3.2"
+    "angular-ui-router": "^0.3.2",
+    "angular-ui": "^0.4.0"
   }
 }
