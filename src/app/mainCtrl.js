@@ -8,6 +8,10 @@
 
         vm.tabs = [
             {sref: 'home', src: 'assets/img/navIcons/logo.png', text: 'Home'},
+            {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
+            {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
+            {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
+            {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
             {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'}
         ];
         

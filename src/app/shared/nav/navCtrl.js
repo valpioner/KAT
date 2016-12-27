@@ -9,10 +9,5 @@
 
     function navCtrl($scope) {
         var vm = this;
-
-        vm.tabs = [
-            {sref: 'home', src: 'assets/img/navIcons/logo.png', text: 'Home'},
-            {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'}
-        ];
     }
 })();

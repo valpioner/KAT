@@ -33,8 +33,11 @@ gulp.task('html', function (){
 
 gulp.task('less', function(){
     gulp.src('src/assets/less/main.less')
+    .pipe(autoprefixer({
+            browsers: ['last 5 versions'],
+            cascade: false
+        })) 
     .pipe(less())
-    .pipe(autoprefixer('last 5 versions')) 
     .pipe(gulp.dest('src/assets/css'))
     .pipe(browserSync.reload({stream: true}));
 });
