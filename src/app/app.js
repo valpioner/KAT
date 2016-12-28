@@ -8,7 +8,8 @@
 
         // Custom modules 
         //"testService"
-        'app.directives.nav'
+        'app.directives.nav',
+        'app.directives.map'
 
         // 3rd Party Modules        
     ]);

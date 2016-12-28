@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp            = require('gulp'),
-    browserSync     = require('browser-sync'), // auto browser sync
+    browserSync     = require('browser-sync').create('My server'), // auto browser sync
     reload          = browserSync.reload, 
     //concat = require('gulp-concat'),
     plumber         = require('gulp-plumber'), // continue task run on pipe error
@@ -11,10 +11,24 @@ var gulp            = require('gulp'),
     less            = require('gulp-less'),
     del             = require('del'); // delete files/folders using globs    
 
-gulp.task('watch', function (){
+    
+gulp.task('default', ['serve']); 
+
+gulp.task('serve', function (){
+    browserSync.init({
+        server:{
+            baseDir: './src/'
+        },
+        port: 3002,
+        ui:{
+            port: 8082
+        }
+    });
+
     gulp.watch('src/assets/less/**/*.less', ['less']);
-    gulp.watch('src/**/*.html', ['html']/*browserSync.reload*/);    
-    gulp.watch('src/**/*.js', ['scripts']);    
+    gulp.watch('src/**/*.html', ['html'])/*.on('change', browserSync.reload)*/;    
+    gulp.watch('src/**/*.js', ['scripts']); 
+
 });
 
 gulp.task('scripts', function (){
@@ -42,26 +56,6 @@ gulp.task('less', function(){
     .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('browser-sync', function (){
-    browserSync({
-        server:{
-            baseDir: './src/'
-        },
-        notify: false
-    });
-});
-
-// gulp.task('build:serve', function (){
-//     browserSync({
-//         server:{
-//             baseDir: './build/'
-//         },
-//         notify: false
-//     });
-// });
-
-//runs all async in same time
-gulp.task('default', ['scripts', 'html', 'less', 'browser-sync', 'watch']); 
 
 
 // build tasks
