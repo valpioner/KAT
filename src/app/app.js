@@ -16,17 +16,42 @@
 
     app.config(function($stateProvider, $urlRouterProvider) {
         
-        $urlRouterProvider.otherwise('home');
+        // $urlRouterProvider.otherwise('/dashboard');
         
         $stateProvider
             
             // HOME STATES AND NESTED VIEWS ========================================
-            .state('home', {
-                url: '/home',
-                controller: 'testCtrl',
+            .state('dashboard', {
+                url: '/dashboard',
+                controller: 'dashboardCtrl',
                 controllerAs: 'vm',
-                templateUrl: 'app/test/test.html'
+                templateUrl: 'app/dashboard/dashboard.html',
+                // resolve:{
+                //     xz: 'yo'
+                // },
+                abstract: true
             })
+
+            .state('dashboard.content', {
+                url: '/',
+                controller: 'contentCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'app/dashboard/content.html'
+            })
+
+            .state('dashboard.content2', {
+                url: '/',
+                controller: 'contentCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'app/dashboard/content2.html'
+            })
+
+            // .state('dashboard.map', {
+            //     url: '/',
+            //     controller: 'mapCtrl',
+            //     controllerAs: 'vm',
+            //     templateUrl: 'app/shared/map/map.html'
+            // })
             
             // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
             .state('contacts', {

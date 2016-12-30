@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .controller('testCtrl', testController);
+        .controller('dashboardCtrl', dashboardCtrl);
 
-    testController.$inject = ['$scope'/*, 'TestService'*/];
+    dashboardCtrl.$inject = ['$scope'/*, 'TestService'*/];
 
-    function testController($scope/*, TestService*/) {
+    function dashboardCtrl($scope/*, TestService*/) {
         var vm = this;
 
         vm.testList = [

@@ -7,8 +7,8 @@
         vm.isNavActive = isNavActive;
 
         vm.tabs = [
-            {sref: 'home', src: 'assets/img/navIcons/logo.png', text: 'Home'},
-            {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
+            {sref: 'dashboard.content', src: 'assets/img/navIcons/logo.png', text: 'Home'},
+            {sref: 'dashboard.content2', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
             {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
             {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},
             {sref: 'contact', src: 'assets/img/navIcons/contact.png', text: 'Contact'},

@@ -1,24 +1,25 @@
-<div class="container">
-
-    
+<div class="container">   
 
     <div class="details-container">
         <header>
             KickAssTrip
         </header>
         <div class="details-content">
-            <a ui-sref="map">Go to map</a>
+            <a ui-sref="dashboard.content">content 1</a><br>
+            <a ui-sref="dashboard.content2">content 2</a><br>
         </div>
     </div>
 
-    <div>
+    <ui-view></ui-view>    
+
+    <!--<div>
         <h2>List</h2>
         <ul>
             <li ng-repeat="item in vm.testList">
                 <p>"{{item.Content}}" - {{item.Author}}</p>
             </li>
         </ul>
-    </div>
+    </div>-->
 
 </div>  
     

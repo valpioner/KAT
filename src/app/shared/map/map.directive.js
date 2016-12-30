@@ -20,9 +20,9 @@
             link: function(scope, element, attrs/*, controllers*/){
                 // var someDirectiveCtrl = controllers[0];
                 // var mapCtrl = controllers[1];
-                element.click(function(){
-                    alert('clicked');
-                });
+                // element.click(function(){
+                //     alert('clicked');
+                // });
             }
         };
     });
