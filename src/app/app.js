@@ -18,45 +18,79 @@
 
     app.config(function($stateProvider, $urlRouterProvider) {
         
-        // $urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/home/map');
         
         $stateProvider            
             // HOME STATES AND NESTED VIEWS ========================================
-            .state('dashboard', {
-                url: '/dashboard',
-                templateUrl: 'app/dashboard/dashboard.html',
-                controller: 'dashboardCtrl',
+            .state('home', {
+                url: '/home',
+                templateUrl: 'app/home/home.html',
+                controller: 'homeCtrl',
                 controllerAs: 'vm',
-                // resolve:{
-                //     xz: 'yo'
-                // },
                 abstract: true
             })
-            .state('dashboard.content', {
-                url: '/content',
-                templateUrl: 'app/dashboard/content.html',
-                controller: 'contentCtrl',
+            .state('home.map', {
+                url: '/map',
+                templateUrl: 'app/home/map.html',
+                controller: 'mapCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    userData: function (contentService) {
-                        return contentService.getUserData(1);
+                    userData: function (mapService) {
+                        return mapService.getUserData(1);
                     }
                 }
             })
-            .state('dashboard.content2', {
-                url: '/content2',
-                templateUrl: 'app/dashboard/content2.html',
-                controller: 'contentCtrl',
+            .state('home.details', {
+                url: '/details',
+                templateUrl: 'app/home/details.html',
+                controller: 'detailsCtrl',
                 controllerAs: 'vm'
             })
-            // .state('dashboard.map', {
-            //     url: '/',
-            //     controller: 'mapCtrl',
-            //     controllerAs: 'vm',
-            //     templateUrl: 'app/shared/map/map.html'
-            // })
-            .state('contacts', {
-                // we'll get to this in a bit       
+
+            .state('search', {
+                url: '/search',
+                templateUrl: 'app/search/search.html',
+                controller: 'searchCtrl',
+                controllerAs: 'vm',
+                abstract: true     
+            })
+            .state('search.countries', {
+                url: '/countries',
+                templateUrl: 'app/search/search-countries.html',
+                // controller: 'searchCtrl',
+                // controllerAs: 'vm'
+            })
+            .state('search.people', {
+                url: '/people',
+                templateUrl: 'app/search/search-people.html',
+                // controller: 'searchCtrl',
+                // controllerAs: 'vm'
+            })
+            .state('search.projects', {
+                url: '/projects',
+                templateUrl: 'app/search/search-projects.html',
+                // controller: 'searchCtrl',
+                // controllerAs: 'vm'
+            })
+
+            .state('help', {
+                url: '/help',
+                templateUrl: 'app/help/help.html',
+                controller: 'helpCtrl',
+                controllerAs: 'vm',
+                abstract: true     
+            })
+            .state('help.about', {
+                url: '/about',
+                templateUrl: 'app/help/about.html',
+                controller: 'helpCtrl',
+                controllerAs: 'vm'
+            })
+            .state('help.terms', {
+                url: '/terms',
+                templateUrl: 'app/help/terms.html',
+                controller: 'helpCtrl',
+                controllerAs: 'vm'
             });
             
     });

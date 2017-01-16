@@ -22,24 +22,25 @@
     
     <script src="assets/bower_components/angular/angular.min.js"></script>
     <script src="assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>    
+
+    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2lEiFT6z5OyAV9EHekmi-mn5PBMdEI-A&callback=initMap"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2lEiFT6z5OyAV9EHekmi-mn5PBMdEI-A"></script>
 
     <script src="app/app.js"></script>
     <script src="app/mainCtrl.js"></script>
 
-    <script src="app/shared/nav/nav.directive.js"></script>
+    <script src="app/shared/directives/nav/nav.directive.js"></script>
+    <script src="app/shared/directives/map/map.directive.js"></script>    
 
-    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2lEiFT6z5OyAV9EHekmi-mn5PBMdEI-A&callback=initMap"></script>-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2lEiFT6z5OyAV9EHekmi-mn5PBMdEI-A"></script>
-    <!--<script src="assets/bower_components/ngmap/build/scripts/ng-map.min.js"></script>-->
+    <script src="app/home/homeCtrl.js"></script>
+    <script src="app/home/mapCtrl.js"></script>
+    <script src="app/home/mapService.js"></script>
+    <script src="app/home/detailsCtrl.js"></script>
+    
+    <script src="app/search/searchCtrl.js"></script>
 
-    <script src="app/shared/map/map.directive.js"></script>    
-
-    <script src="app/dashboard/dashboardCtrl.js"></script>
-    <script src="app/dashboard/dashboardService.js"></script>
-
-    <script src="app/dashboard/contentCtrl.js"></script>
-    <script src="app/dashboard/contentService.js"></script>
+    <script src="app/help/helpCtrl.js"></script>
     
 
 </body>

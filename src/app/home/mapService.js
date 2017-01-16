@@ -1,7 +1,7 @@
 (function () {
     'use strict';    
 
-    angular.module('app').factory('contentService', function ($http) {        
+    angular.module('app').factory('mapService', function ($http) {        
         function getUserData (id) {
             //$http.get('user_' + id + '_data.json');
             // .success(function(data) {

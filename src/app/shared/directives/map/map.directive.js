@@ -3,17 +3,20 @@
 
     angular
         .module('app.directives.mapDir', [])
-        .directive('mapDir', map);
+        .directive('mapDir', mapDirective);
 
-    function map() {
+    function mapDirective() {
         return{
             restrict: 'E',
-            templateUrl: 'app/shared/map/map.html',
+            templateUrl: 'app/shared/directives/map/map.directive.html',
+            //template: '<div>A:{{internalControl}}</div>',
             //transclude: true,
             //scope: false,
             // require: ['^someDirective', 'map'],
             scope: {
-                data: '='
+                data: '=',
+                searchControl: '=',
+                change: '='
             },
             //controller: 'navCtrl',
             controller: mapCtrl,
@@ -395,10 +398,11 @@
                 //        });
                 //    });
                 //}
-
-                vm.showMarkers();
-                vm.showAirPath();
-                vm.showGroundPath();
+                if ($scope.data !== undefined) {
+                    vm.showMarkers();
+                    vm.showAirPath();
+                    vm.showGroundPath();
+                }
 
             };
 
@@ -450,9 +454,22 @@
         function linkFunc(scope, element, attrs/*, controllers*/) {
             // var someDirectiveCtrl = controllers[0];
             // var mapCtrl = controllers[1];
-            // element.click(function(){
-            //     alert('clicked');
-            // });
+
+            if (scope.searchControl !== undefined){
+                scope.searchControl.searchCountry = function () {
+
+                }
+            }
+
+            scope.control = scope.control || {};
+            scope.internalControl.takenTablets = 0;
+            scope.internalControl.takeTablet = function() {
+                scope.internalControl.takenTablets += 1;
+            }
+
+            scope.change = function(){
+                alert('asd');
+            };
         }
     }
 

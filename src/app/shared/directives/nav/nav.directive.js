@@ -1,8 +1,11 @@
 (function () {
     'use strict';
 
-    angular.module('app.directives.nav', [])
-    .directive('nav', function() {
+    angular
+        .module('app.directives.nav', [])
+        .directive('nav', navDirective);
+
+    function navDirective () {
         return{
             restrict: 'E',
             //transclude: true,
@@ -10,8 +13,8 @@
             // controller: 'navCtrl',
             // controllerAs: 'vm',
             scope: false,
-            templateUrl: 'app/shared/nav/nav.html'
+            templateUrl: 'app/shared/directives/nav/nav.directive.html'
         };
-    });
+    }
 
 })();

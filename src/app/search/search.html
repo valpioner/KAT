@@ -1,0 +1,25 @@
+<div class="container">   
+
+    <div class="details-container">
+
+        <header>
+            KickAssTrip
+        </header>
+
+        <div class="details-content">
+            <a ui-sref="search.countries">Countries</a><br>
+            <a ui-sref="search.people">People</a><br>
+            <a ui-sref="search.projects">Projects</a><br>            
+
+            <button ng-click="vm.mapControl.takeTablet()">Call directive function</button>
+            <button ng-click="vm.doSmth()">Call directive function</button>
+            <b>In controller scope:</b>
+            {{vm.mapControl}}
+        </div>
+        
+    </div>
+
+    <ui-view class="full flex-rows"></ui-view> 
+
+</div>  
+    
