@@ -24,9 +24,9 @@
             // HOME STATES AND NESTED VIEWS ========================================
             .state('dashboard', {
                 url: '/dashboard',
+                templateUrl: 'app/dashboard/dashboard.html',
                 controller: 'dashboardCtrl',
                 controllerAs: 'vm',
-                templateUrl: 'app/dashboard/dashboard.html',
                 // resolve:{
                 //     xz: 'yo'
                 // },
@@ -34,15 +34,20 @@
             })
             .state('dashboard.content', {
                 url: '/content',
+                templateUrl: 'app/dashboard/content.html',
                 controller: 'contentCtrl',
                 controllerAs: 'vm',
-                templateUrl: 'app/dashboard/content.html'
+                resolve: {
+                    userData: function (contentService) {
+                        return contentService.getUserData(1);
+                    }
+                }
             })
             .state('dashboard.content2', {
                 url: '/content2',
+                templateUrl: 'app/dashboard/content2.html',
                 controller: 'contentCtrl',
-                controllerAs: 'vm',
-                templateUrl: 'app/dashboard/content2.html'
+                controllerAs: 'vm'
             })
             // .state('dashboard.map', {
             //     url: '/',

@@ -1,9 +1,9 @@
 (function () {
     'use strict';    
 
-    angular.module('app').controller('contentCtrl', function ($scope, $state) {
+    angular.module('app').controller('contentCtrl', function ($scope, $state, userData, contentService) {
         var vm = this;
 
-        vm.mapData = 1;
+        vm.mapData = userData;
     });
 })();
