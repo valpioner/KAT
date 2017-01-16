@@ -1,15 +1,15 @@
-(function () {
-    'use strict';
+// (function () {
+//     'use strict';
 
-    angular
-        .module('app.directives.map')
-        .controller('mapCtrl', mapCtrl);
+//     angular
+//         .module('app.directives.map')
+//         .controller('mapCtrl', mapCtrl);
 
-    mapCtrl.$inject = ['$scope'];
+//     mapCtrl.$inject = ['$scope'];
 
-    function mapCtrl($scope) {
-        var vm = this;
+//     function mapCtrl($scope) {
+//         var vm = this;
 
         
-    }
-})();
+//     }
+// })();

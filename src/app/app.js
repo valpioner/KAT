@@ -9,17 +9,18 @@
         // Custom modules 
         //"testService"
         'app.directives.nav',
-        'app.directives.map'
+        'app.directives.mapDir',
 
-        // 3rd Party Modules        
+        // 3rd Party Modules   
+        //'uiGmapgoogle-maps'   
+        //'ngMap'  
     ]);
 
     app.config(function($stateProvider, $urlRouterProvider) {
         
         // $urlRouterProvider.otherwise('/dashboard');
         
-        $stateProvider
-            
+        $stateProvider            
             // HOME STATES AND NESTED VIEWS ========================================
             .state('dashboard', {
                 url: '/dashboard',
@@ -31,34 +32,37 @@
                 // },
                 abstract: true
             })
-
             .state('dashboard.content', {
-                url: '/',
+                url: '/content',
                 controller: 'contentCtrl',
                 controllerAs: 'vm',
                 templateUrl: 'app/dashboard/content.html'
             })
-
             .state('dashboard.content2', {
-                url: '/',
+                url: '/content2',
                 controller: 'contentCtrl',
                 controllerAs: 'vm',
                 templateUrl: 'app/dashboard/content2.html'
             })
-
             // .state('dashboard.map', {
             //     url: '/',
             //     controller: 'mapCtrl',
             //     controllerAs: 'vm',
             //     templateUrl: 'app/shared/map/map.html'
             // })
-            
-            // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
             .state('contacts', {
                 // we'll get to this in a bit       
             });
             
     });
+
+    // app.config(function(uiGmapGoogleMapApiProvider) {
+    //     uiGmapGoogleMapApiProvider.configure({
+    //         //    key: 'your api key',
+    //         v: '3.20', //defaults to latest 3.X anyhow
+    //         libraries: 'weather,geometry,visualization'
+    //     });
+    // });
 
     //angular.module('app').config(['$routeProvider', '$locationProvider',
     //    function ($routeProvider, $locationProvider) {

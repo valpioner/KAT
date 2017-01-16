@@ -3,5 +3,7 @@
 
     angular.module('app').controller('contentCtrl', function ($scope, $state) {
         var vm = this;
+
+        vm.mapData = 1;
     });
 })();

@@ -1,0 +1,8 @@
+{
+    "poly_flights" : {
+        "kat0_1": [ll.kiew, ll.ams, ll.ny, ll.minneapolis, ll.anchorage, ll.sf],
+        "kat0_2": [ll.la, ll.ny, ll.paris, ll.kiew],
+        "kat1_1": [ll.krakow, ll.oslo, ll.venice],
+        "kat1_2": [ll.hcm, ll.bkk, ll.istanbul, ll.kiew],
+    }
+}

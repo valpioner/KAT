@@ -23,6 +23,19 @@ body {
   width: 100%;
   height: 100%;
 }
+body .full {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+body .flex-rows {
+  display: flex;
+  flex-direction: column;
+}
+body .flex-basis-100 {
+  flex-basis: 100%;
+}
 body .parent-container {
   display: flex;
   flex-direction: row;
