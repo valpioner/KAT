@@ -12,7 +12,7 @@
             //template: '<div>A:{{internalControl}}</div>',
             //transclude: true,
             //scope: false,
-            // require: ['^someDirective', 'map'],
+            require: [/*'^someDirective', */'mapDir'],
             scope: {
                 data: '=',
                 searchControl: '=',
@@ -25,10 +25,11 @@
 
         function mapCtrl($scope/*, uiGmapGoogleMapApi, NgMap*/, $timeout) {
             var vm = this;
+            $scope.vm = vm;
 
-            vm.map = null;
-            vm.polyFlightsOptions = null;
-            vm.polyGroundOptions = null;
+            vm.map = undefined;
+            vm.polyFlightsOptions = undefined;
+            vm.polyGroundOptions = undefined;
 
             vm.allFlights = [];
             vm.allMarkers = [];
@@ -398,6 +399,62 @@
                 //        });
                 //    });
                 //}
+
+                var input = document.getElementById('map-search');
+                var searchBox = new google.maps.places.SearchBox(input);
+                //vm.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                vm.map.addListener('bounds_changed', function() {
+                    searchBox.setBounds(vm.map.getBounds());
+                });
+
+                var markers = [];
+                searchBox.addListener('places_changed', function() {
+                    var places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                        return;
+                    }
+
+                    // Clear out the old markers.
+                    markers.forEach(function(marker) {
+                        marker.setMap(null);
+                    });
+                    markers = [];
+
+                    // For each place, get the icon, name and location.
+                    var bounds = new google.maps.LatLngBounds();
+                    places.forEach(function(place) {
+                        if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                        }
+                        var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                        };
+
+                        // Create a marker for each place.
+                        markers.push(new google.maps.Marker({
+                        map: vm.map,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                        }));
+
+                        if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                        } else {
+                        bounds.extend(place.geometry.location);
+                        }
+                    });
+                    vm.map.fitBounds(bounds);
+                });
+
                 if ($scope.data !== undefined) {
                     vm.showMarkers();
                     vm.showAirPath();
@@ -449,11 +506,52 @@
                     )
                 });
             };
+
+            vm.search = function (req) {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'address': req.searchValue}, function(results, status) {
+                    if (status === 'OK') {
+                        vm.map.panTo(results[0].geometry.location);
+                        //setMarker(results[0].geometry.location);
+                        zoomTo(4);
+                    } else {
+                        console.log('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+
+            function setMarker (location) {
+                var marker = new google.maps.Marker({
+                    map: vm.map,
+                    position: location
+                });
+            }
+
+            function zoomTo (zoomLvl) {
+                // var currentZoom = vm.map.getZoom();
+                // if (currentZoom != zoomLvl) {
+                //     google.maps.event.addListenerOnce(vm.map, 'zoom_changed', function (event) {
+                //         zoomTo(map, zoomLvl, currentZoom + (zoomLvl > currentZoom ? 1 : -1));
+                //     });
+                //     setTimeout(function(){ vm.map.setZoom(currentZoom) }, 80);
+                // }
+
+                if (zoomLvl >= 16) {
+                    return;
+                }
+                else {
+                    var z = google.maps.event.addListener(vm.map, 'zoom_changed', function(event) {
+                        google.maps.event.removeListener(z);
+                        zoomTo(zoomLvl + 1);
+                    });
+                    $timeout(function(){vm.map.setZoom(zoomLvl)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+                }
+            }
         }
 
-        function linkFunc(scope, element, attrs/*, controllers*/) {
+        function linkFunc(scope, element, attrs, controllers) {
             // var someDirectiveCtrl = controllers[0];
-            // var mapCtrl = controllers[1];
+            var vm = controllers[0];
 
             if (scope.searchControl !== undefined){
                 scope.searchControl.searchCountry = function () {
@@ -461,15 +559,24 @@
                 }
             }
 
-            scope.control = scope.control || {};
-            scope.internalControl.takenTablets = 0;
-            scope.internalControl.takeTablet = function() {
-                scope.internalControl.takenTablets += 1;
-            }
+            // scope.control = scope.control || {};
+            // scope.internalControl.takenTablets = 0;
+            // scope.internalControl.takeTablet = function() {
+            //     scope.internalControl.takenTablets += 1;
+            // }
 
-            scope.change = function(){
-                alert('asd');
-            };
+            // scope.change = function(){
+            //     alert('asd');
+            // };
+
+            vm.internalControl = scope.searchControl || {};
+            vm.internalControl.search = vm.search;
+            
+
+
+
+
+
         }
     }
 
