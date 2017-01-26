@@ -1,5 +1,5 @@
 
-<a ui-sref="{{tab.sref}}" ng-repeat="tab in vm.tabs">
+<a ui-sref="{{tab.sref}}" ng-repeat="tab in vm.tabs" ng-class="{active: vm.isNavActive(tab.sref)}">
     <figure>
         <img src="{{tab.src}}" />
         {{tab.text}}
