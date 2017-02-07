@@ -5,6 +5,7 @@
         .module('app')
         .controller('mainCtrl', mainCtrl);
 
+    /*@ngInject*/
     function mainCtrl ($scope, $state) {
         var vm = this;
 

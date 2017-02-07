@@ -5,8 +5,7 @@
         .module('app')
         .controller('helpCtrl', helpCtrl);
 
-    // homeCtrl.$inject = ['$scope'/*, 'TestService'*/];
-
+    /*@ngInject*/
     function helpCtrl($scope/*, TestService*/) {
         var vm = this;
     }

@@ -5,8 +5,7 @@
         .module('app')
         .controller('searchCtrl', searchCtrl);
 
-    // homeCtrl.$inject = ['$scope'/*, 'TestService'*/];
-
+    /*@ngInject*/
     function searchCtrl($scope/*, TestService*/) {
         var vm = this;
 

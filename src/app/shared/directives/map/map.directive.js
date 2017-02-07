@@ -23,6 +23,7 @@
             link: linkFunc
         };
 
+        /*@ngInject*/
         function mapCtrl($scope/*, uiGmapGoogleMapApi, NgMap*/, $timeout) {
             var vm = this;
             $scope.vm = vm;

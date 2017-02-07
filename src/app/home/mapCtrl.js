@@ -5,8 +5,7 @@
         .module('app')
         .controller('mapCtrl', mapCtrl);
 
-    // mapCtrl.$inject = ['$scope'/*, 'TestService'*/];
-
+    /*@ngInject*/
     function mapCtrl ($scope, $state, userData, mapService) {
         var vm = this;
 

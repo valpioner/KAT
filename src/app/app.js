@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app', [
+    angular.module('app', [
         // Angular modules 
         'ui.router',
         'ui.bootstrap',
@@ -15,13 +15,17 @@
         //'uiGmapgoogle-maps'   
         //'ngMap'  
     ]);
+    
+    angular
+        .module('app')
+        .config(configure);   
 
-    app.config(function($stateProvider, $urlRouterProvider) {
-        
+    /* @ngInject */
+    function configure($stateProvider, $urlRouterProvider) {
+
         $urlRouterProvider.otherwise('/home/map');
         
         $stateProvider            
-            // HOME STATES AND NESTED VIEWS ========================================
             .state('home', {
                 url: '/home',
                 templateUrl: 'app/home/home.html',
@@ -92,37 +96,7 @@
                 controller: 'helpCtrl',
                 controllerAs: 'vm'
             });
-            
-    });
+        
+    }
 
-    // app.config(function(uiGmapGoogleMapApiProvider) {
-    //     uiGmapGoogleMapApiProvider.configure({
-    //         //    key: 'your api key',
-    //         v: '3.20', //defaults to latest 3.X anyhow
-    //         libraries: 'weather,geometry,visualization'
-    //     });
-    // });
-
-    //angular.module('app').config(['$routeProvider', '$locationProvider',
-    //    function ($routeProvider, $locationProvider) {
-    //        $routeProvider
-    //            .when('/', {
-    //                templateUrl: 'partials/test.html',
-    //                controller: 'testController'
-    //            })
-    //            .when('/test/add', {
-    //                templateUrl: 'partials/add.html',
-    //                controller: 'testController'
-    //            })
-    //            .when('/test/edit/:id', {
-    //                templateUrl: 'partials/edit.html',
-    //                controller: 'testController'
-    //            })
-    //            .when('/test/delete/:id', {
-    //                templateUrl: 'partials/delete.html',
-    //                controller: 'testController'
-    //            });
-
-    //        $locationProvider.htmlMode(true);
-    //    }]);
 })();
