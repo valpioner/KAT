@@ -79,8 +79,9 @@ gulp.task('  build:copy', function () {
 gulp.task('  build:copy_libs', function (){       
     return gulp.src([
         'src/assets/bower_components/angular/angular.js',
-        'src/assets/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        'src/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
+        'src/assets/bower_components/angular-animate/angular-animate.js',
+        'src/assets/bower_components/angular-ui-router/release/angular-ui-router.js',
+        'src/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
     ])
     .pipe(gulp.dest('dist/libs/'));
 });
@@ -99,6 +100,7 @@ gulp.task('build', function (cb) {
         '  build:copy_libs', 
         '  build:remove', 
         'js', 
+        'less',
         cb);
 });
 

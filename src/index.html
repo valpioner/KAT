@@ -18,12 +18,23 @@
         <nav></nav> 
         <div ui-view class="ui-view-container"></div>
 
+        <div class="alert-container">
+            <div uib-alert ng-repeat="alert in alerts" 
+                ng-class="'alert-' + (alert.type || 'warning')" 
+                close="vm.alertService.closeAlert()"
+                dismiss-on-timeout="2000"
+                class="alert-fade">
+                {{alert.msg}}
+            </div>
+        <div>
+
     </div>  
     
     <script src="libs/angular.js"></script>
+    <script src="libs/angular-animate.js"></script>
     <!--<script src="assets/bower_components/angular/angular.min.js"></script>-->
-    <script src="libs/ui-bootstrap-tpls.min.js"></script>
-    <script src="libs/angular-ui-router.min.js"></script>    
+    <script src="libs/ui-bootstrap-tpls.js"></script>
+    <script src="libs/angular-ui-router.js"></script>    
 
     <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2lEiFT6z5OyAV9EHekmi-mn5PBMdEI-A&callback=initMap"></script>-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2lEiFT6z5OyAV9EHekmi-mn5PBMdEI-A&libraries=places"></script>
@@ -32,7 +43,9 @@
     <script src="app/mainCtrl.js"></script>
 
     <script src="app/shared/directives/nav/nav.directive.js"></script>
-    <script src="app/shared/directives/map/map.directive.js"></script>    
+    <script src="app/shared/directives/map/map.directive.js"></script>  
+
+    <script src="app/shared/services/alert.service.js"></script> 
 
     <script src="app/home/homeCtrl.js"></script>
     <script src="app/home/mapCtrl.js"></script>

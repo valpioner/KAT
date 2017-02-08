@@ -6,7 +6,11 @@
         .controller('homeCtrl', homeCtrl);
 
     /*@ngInject*/
-    function homeCtrl($scope/*, TestService*/) {
+    function homeCtrl($scope/*, TestService*/, alertService) {
         var vm = this;
+
+        $scope.addAlert = function() {
+            alertService.add('info','Information Only ');
+        };
     }
 })();
