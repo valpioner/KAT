@@ -6,7 +6,7 @@
         .controller('mapCtrl', mapCtrl);
 
     /*@ngInject*/
-    function mapCtrl ($scope, $state, userData, mapService) {
+    function mapCtrl (userData) {
         var vm = this;
 
         vm.mapData = userData;

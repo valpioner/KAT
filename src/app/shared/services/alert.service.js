@@ -7,28 +7,16 @@
 
     /*@ngInject*/
     function alertService($rootScope){
+
         $rootScope.alerts = [];
 
-        // usage:
-        // alertService.add('warning', 'This is a warning.');
-        // alertService.add('danger', 'This is a danger.');
-        // alertService.add('success', 'This is a success.');
-        // alertService.add('info', 'This is info.');
-
-        var alertService = {
-            add: add,
-            closeAlert: closeAlert
+        return alertService = {
+            warning: (msg) => $rootScope.alerts.push({'type': 'warning', 'msg': msg}),
+            danger: (msg) => $rootScope.alerts.push({'type': 'danger', 'msg': msg}),
+            success: (msg) => $rootScope.alerts.push({'type': 'success', 'msg': msg}),
+            info: (msg) => $rootScope.alerts.push({'type': 'info', 'msg': msg}),
+            closeAlert: (index) => $rootScope.alerts.splice(index, 1)
         };
-
-        function add(type, msg) {
-            $rootScope.alerts.push({'type': type, 'msg': msg});
-        }
-
-        function closeAlert(index) {
-            $rootScope.alerts.splice(index, 1);
-        }
-
-        return alertService;
     }
 
 })();

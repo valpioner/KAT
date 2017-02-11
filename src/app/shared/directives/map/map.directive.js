@@ -24,13 +24,13 @@
         };
 
         /*@ngInject*/
-        function mapCtrl($scope/*, uiGmapGoogleMapApi, NgMap*/, $timeout) {
+        function mapCtrl($scope, core) {
             var vm = this;
             $scope.vm = vm;
 
-            vm.map = undefined;
-            vm.polyFlightsOptions = undefined;
-            vm.polyGroundOptions = undefined;
+            vm.map;
+            vm.polyFlightsOptions;
+            vm.polyGroundOptions;
 
             vm.allFlights = [];
             vm.allMarkers = [];
@@ -39,7 +39,7 @@
             vm.showGroundPath = showGroundPath;
             vm.showMarkers = showMarkers;
 
-            $timeout(initialize());
+            core.$timeout(initialize());
 
             function initialize (map) {                                
                 var MY_MAPTYPE_ID = 'kickasstrip_style';
@@ -553,7 +553,7 @@
                         google.maps.event.removeListener(z);
                         zoomTo(zoomLvl + 1);
                     });
-                    $timeout(function(){vm.map.setZoom(zoomLvl)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+                    core.$timeout(function(){vm.map.setZoom(zoomLvl)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
                 }
             }
         }

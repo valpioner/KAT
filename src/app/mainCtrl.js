@@ -6,11 +6,11 @@
         .controller('mainCtrl', mainCtrl);
 
     /*@ngInject*/
-    function mainCtrl ($scope, $state, $rootScope, alertService) {
+    function mainCtrl ($scope, $state, $rootScope, core) {
         var vm = this;
 
         vm.isNavActive = isNavActive;
-        vm.alertService = alertService;
+        vm.alertService = core.alert;
 
         vm.tabs = [
             { sref: 'home.map', src: 'assets/img/navIcons/logo.png', text: 'Home' },

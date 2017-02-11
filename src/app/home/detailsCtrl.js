@@ -6,7 +6,7 @@
         .controller('detailsCtrl', detailsCtrl);
 
     /*@ngInject*/
-    function detailsCtrl($scope/*, TestService*/) {
+    function detailsCtrl() {
         var vm = this;
     }
 })();
