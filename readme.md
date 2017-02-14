@@ -15,6 +15,8 @@ _______________________________________________TODO:
 - Log service
 - Cache service
 
+- auth
+
 - Wire-dep
 
 Map:
@@ -32,3 +34,8 @@ Map:
 - Add user plight route info
 - Add user ground route info
 - Add user markers
+
+
+
+// https://school.scotch.io/lounge
+// https://scotch.io/tutorials/angularjs-best-practices-directory-structure
