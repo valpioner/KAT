@@ -7,8 +7,12 @@
         </header>
 
         <div class="details-content">
+            <a ui-sref="home.details">Dashboard</a><br>
             <a ui-sref="home.map">Map</a><br>
-            <a ui-sref="home.details">Details</a><br>
+            <a ui-sref="home.map">Blog</a><br>
+            <a ui-sref="home.map">News</a><br>
+            <a ui-sref="home.map">Messages</a><br><br><br>
+
 
             <button ng-click="vm.alert()">Add Alert</button><br>
             <button ng-click="vm.log()">aaaaaa</button>
@@ -16,7 +20,7 @@
         
     </div>
 
-    <ui-view class="full"></ui-view> 
+    <ui-view class="content-container"></ui-view> 
 
 </div>  
     
