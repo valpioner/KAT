@@ -1,0 +1,14 @@
+{
+    "id": 1,
+
+    "firstName": "valentyn",
+    "secondName": "vasylevskyy",
+    "dateOfBirth": "17/11/1990",
+
+    "role": "admin",
+
+    "mapData": {
+        
+    }
+
+}

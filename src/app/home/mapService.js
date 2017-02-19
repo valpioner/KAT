@@ -4,11 +4,11 @@
     /*@ngInject*/
     angular.module('app').factory('mapService', function ($http) {        
         function getUserData (id) {
-            //$http.get('user_' + id + '_data.json');
-            // .success(function(data) {
-            //     // you can do some processing here
-            //     return data;
-            // });  
+            $http.get('user_' + id + '_data.json')
+                .success(function(data) {
+                    // you can do some processing here
+                    return data;
+                });  
 
             return {
                 polyFlights : [
