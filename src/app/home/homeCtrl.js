@@ -16,5 +16,13 @@
         vm.log = function() {
             core.logger.debug('ffff');
         };
+
+        vm.saveInLocalStorage = function (){
+            core.cache.set('key111', 'value111');
+        }
+
+        vm.getFromLocalStorage = function (){
+            console.log(core.cache.get('key111'));
+        }
     }
 })();

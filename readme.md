@@ -2,18 +2,17 @@
 
 _______________________________________________Implemented:
 
-- Alert service
-
+- Core Service: 
+    - Alert service
+    - Log service
+    - Cache service
 
 
 
 _______________________________________________TODO:
 
-- Core service - integrate all core services into core one.
-
 - Chat service
-- Log service
-- Cache service
+- back-end
 
 - auth
 

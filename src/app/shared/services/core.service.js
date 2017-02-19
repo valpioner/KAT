@@ -6,12 +6,12 @@
         .factory('core', coreService);
 
     /*@ngInject*/
-    function coreService($timeout, logService, alertService){
+    function coreService($timeout, logService, alertService, cacheService){
         var coreService = {
             $timeout: $timeout,
             logger : logService,
-            alert: alertService
-            //cache : cache
+            alert: alertService,
+            cache : cacheService
         };
 
         

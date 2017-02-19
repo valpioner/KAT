@@ -5,6 +5,7 @@
         // Angular modules 
         'ui.router',
         'ui.bootstrap',
+        'angular-cache',
         'ngAnimate',
 
         // Custom modules 
