@@ -29,7 +29,7 @@
             $scope.vm = vm;
 
             vm.map;
-            vm.polyFlightsOptions;
+            vm.airPathOptions;
             vm.polyGroundOptions;
 
             vm.allFlights = [];
@@ -131,101 +131,9 @@
                 var styledMap = new google.maps.StyledMapType(mapstyles, { name: "KickAssTrip" });
                 vm.map = new google.maps.Map(document.getElementById("map"), mapOptions);
                 vm.map.mapTypes.set(MY_MAPTYPE_ID, styledMap);
-                vm.map.setMapTypeId(MY_MAPTYPE_ID);
+                vm.map.setMapTypeId(MY_MAPTYPE_ID);                
 
-                // lat_long - all places listed here
-                var ll = { 
-                    oslo: new google.maps.LatLng(59.924484, 10.705147),
-
-                    krakow: new google.maps.LatLng(50.064650, 19.944979),
-                    bMazurski: new google.maps.LatLng(54.2478001, 22.0367288),
-
-                    lviv : new google.maps.LatLng(49.840149, 24.022068),
-                    khmel : new google.maps.LatLng(49.410552, 26.9952585),
-                    kiew : new google.maps.LatLng(50.448853, 30.513346),
-                    lugansk: new google.maps.LatLng(48.580064, 39.3569675),
-                    //zp:
-                    dnipro: new google.maps.LatLng(48.4622985, 35.0003565),
-                    luck: new google.maps.LatLng(50.7424049, 25.3143281),
-                    sevastopol: new google.maps.LatLng(44.6142155, 33.6380221),
-                    alushta: new google.maps.LatLng(44.6655416, 34.4007384),
-
-                    pomorie: new google.maps.LatLng(42.569165, 27.6225717),
-                    burgas: new google.maps.LatLng(42.526522, 27.4519659),
-
-                    istanbul : new google.maps.LatLng(41.015137, 28.979530),
-
-                    ams : new google.maps.LatLng(52.374355, 4.897960),
-
-                    paris : new google.maps.LatLng(48.858093, 2.294694),
-
-                    venice : new google.maps.LatLng(45.444958, 12.328463),
-
-                    ny : new google.maps.LatLng(40.785091, -73.968285),
-                    minneapolis : new google.maps.LatLng(44.970697, -93.2614785),
-                    anchorage : new google.maps.LatLng(61.217381, -149.863129),
-                    sf : new google.maps.LatLng(37.774929, -122.41941),
-                    la : new google.maps.LatLng(34.0204989, -118.4117325),
-                    lasvegas : new google.maps.LatLng(36.125, -115.175),
-                    seward : new google.maps.LatLng(60.121016, -149.440702),
-                    fresno : new google.maps.LatLng(36.7855335, -119.7945615),
-                    yosemitte : new google.maps.LatLng(37.817759, -119.006746),
-                    hooverDam : new google.maps.LatLng(36.016066, -114.737732),
-                    grandCanyon : new google.maps.LatLng(36.051752, -112.105987),
-                    roanokeIsland : new google.maps.LatLng(35.8793879, -75.6706339),
-                    niagara : new google.maps.LatLng(43.0995055, -79.0087415),
-
-                    astr : new google.maps.LatLng(46.3600004, 48.0567574),
-                    volgograd : new google.maps.LatLng(48.6941068, 44.4521192),
-
-                    atyrau : new google.maps.LatLng(47.0983901, 51.9388531),
-                    almaty : new google.maps.LatLng(43.2172237, 76.9441652),
-
-                    lanzhou : new google.maps.LatLng(36.062927, 103.835514),
-                    urumchi : new google.maps.LatLng(43.8217127, 87.5627517),
-                    beiging : new google.maps.LatLng(39.9388838, 116.3974589),
-                    shanghai : new google.maps.LatLng(31.2243489, 121.4767528),
-                    nanchang : new google.maps.LatLng(28.680929, 115.9043884),
-                    sz : new google.maps.LatLng(22.5551603, 114.0538788),
-                    kunming : new google.maps.LatLng(25.0213873, 102.7410507),
-                    xishuangbanna : new google.maps.LatLng(21.9794698, 100.8146668),
-
-                    luangNamtha : new google.maps.LatLng(20.9669121, 101.4141083),
-                    luangPrab : new google.maps.LatLng(19.8856369, 102.1455574),
-                    xayaboury : new google.maps.LatLng(19.2588464, 101.7082068),
-                    vangVieng : new google.maps.LatLng(18.9444018, 102.44766),
-                    vientian : new google.maps.LatLng(17.962856, 102.610514),
-                    buddahPark : new google.maps.LatLng(17.912296, 102.765366),
-
-                    bkk : new google.maps.LatLng(13.736717, 100.523186),
-                    nongKlang : new google.maps.LatLng(17.865140, 102.723039),
-                    khonKaen : new google.maps.LatLng(16.439654, 102.828484),
-                    chiangMai : new google.maps.LatLng(18.788370, 98.985316),
-                    pattaya : new google.maps.LatLng(12.8866953, 100.9227597),
-                    surathani : new google.maps.LatLng(9.134308, 99.333493),
-                    samui : new google.maps.LatLng(9.5011335, 100.0014125),
-                    phaNgan : new google.maps.LatLng(9.7529558, 99.9989201),
-                    tao : new google.maps.LatLng(10.082685, 99.823718),
-                    phuket : new google.maps.LatLng(7.9665318, 98.3599288),
-                    kraburi : new google.maps.LatLng(10.431733, 98.790255),
-                    krabi : new google.maps.LatLng(8.065805, 98.91364),
-                    trang : new google.maps.LatLng(7.560684, 99.605027),
-                    hatYai : new google.maps.LatLng(7.019714, 100.497778),
-                    songhla : new google.maps.LatLng(7.189177, 100.596048),
-
-                    paoyPaet : new google.maps.LatLng(13.6700534, 102.602355),
-                    siemReap : new google.maps.LatLng(13.3457263, 103.8629545),
-                    pp : new google.maps.LatLng(11.5793642, 104.8901867),
-
-                    bukitKayuHitam : new google.maps.LatLng(6.519450, 100.419138),
-                    georgeTown : new google.maps.LatLng(5.4107713, 100.3090871),
-
-                    hcm : new google.maps.LatLng(10.762622, 106.660172),
-                    nhaTrang : new google.maps.LatLng(12.2595968, 109.2405693),
-                    dalat : new google.maps.LatLng(11.9039109, 108.4507227)
-                };
-
-                vm.polyFlightsOptions = {
+                vm.airPathOptions = {
                     strokeColor: '#5A8DBE',//'#58BB7A',
                     strokeOpacity: 1.0,
                     strokeWeight: 1,
@@ -268,108 +176,43 @@
 
                 
 
-                var routesets = [
-                    {
-                        "r": [
-                        //{
-                        //    origin: ll.krakow,
-                        //    destination: ll.urumchi,
-                        //    waypoints: [ll.lviv, ll.khmel, ll.kiew, ll.lugansk, ll.volgograd, ll.astr, ll.atyrau, ll.almaty]
-                        //},
-
-                        //{
-                        //    origin: ll.urumchi,
-                        //    destination: ll.luangPrab,
-                        //    waypoints: [ll.lanzhou, ll.beiging, ll.shanghai, ll.nanchang, ll.sz, ll.kunming, ll.xishuangbanna, ll.luangNamtha]
-                        //},
-
-                        //{
-                        //    origin: ll.burgas,
-                        //    destination: ll.kiew,
-                        //    waypoints: [ll.pomorie, ll.lviv, ll.bMazurski, ll.lviv, ll.luck, ll.alushta, ll.sevastopol, ll.dnipro]
-                        //},
-
-                        //{
-                        //    origin: ll.luangPrab,
-                        //    destination: ll.pattaya,
-                        //    waypoints: [ll.xayaboury, ll.vangVieng, ll.vientian, ll.khonKaen, ll.chiangMai, ll.bkk]
-                        //},
-
-                        //{
-                        //    origin: ll.nhaTrang,
-                        //    destination: ll.phuket,
-                        //    waypoints: [ll.dalat, ll.hcm, ll.pp, ll.siemReap, ll.bkk, ll.surathani, ll.samui, ll.phaNgan]
-                        //},
-
-                        //{
-                        //    origin: ll.georgeTown,
-                        //    destination: ll.kraburi,
-                        //    waypoints: [ll.bukitKayuHitam, ll.hatYai, ll.songhla, ll.trang, ll.krabi, ll.phuket]
-                        //},
-
-                        //{
-                        //    origin: ll.sf,
-                        //    destination: ll.grandCanyon,
-                        //    waypoints: [ll.fresno, ll.yosemitte, ll.lasvegas, ll.hooverDam]
-                        //},
-
-                        //{
-                        //    origin: ll.roanokeIsland,
-                        //    destination: ll.niagara,
-                        //    waypoints: [ll.ny]
-                        //},
-
-                        //{
-                        //    origin: ll.lasvegas,
-                        //    destination: ll.la
-                        //},                        
-                        ]
-                    },
-                    {
-                        "r": [
-                        //{
-                        //    origin: ll.anchorage,
-                        //    destination: ll.seward
-                        //}
-                        ]
-                    }
-                ]
+                
 
 
-                calcRoute();
+                // calcRoute();
 
-                function calcRoute() {
-                    var directionsService = new google.maps.DirectionsService();
+                // function calcRoute() {
+                //     var directionsService = new google.maps.DirectionsService();
 
-                    angular.forEach(routesets, function (rs ,index) {
-                        angular.forEach(rs.r, function (el, i) {
-                            var waypts = [];
-                            if (el.waypoints !== undefined) {
-                                for (var y = 0; y < el.waypoints.length; y++) {
-                                    waypts.push({ location: el.waypoints[y], stopover: false });
-                                }
-                            }
+                //     angular.forEach(routesets, function (rs ,index) {
+                //         angular.forEach(rs.r, function (el, i) {
+                //             var waypts = [];
+                //             if (el.waypoints !== undefined) {
+                //                 for (var y = 0; y < el.waypoints.length; y++) {
+                //                     waypts.push({ location: el.waypoints[y], stopover: false });
+                //                 }
+                //             }
 
-                            var request = {
-                                origin: el.origin,
-                                destination: el.destination,
-                                waypoints: waypts,
-                                optimizeWaypoints: true,
-                                travelMode: google.maps.TravelMode.DRIVING
-                            };
+                //             var request = {
+                //                 origin: el.origin,
+                //                 destination: el.destination,
+                //                 waypoints: waypts,
+                //                 optimizeWaypoints: true,
+                //                 travelMode: google.maps.TravelMode.DRIVING
+                //             };
 
-                            var directionsDisplay = new google.maps.DirectionsRenderer();
-                            directionsDisplay.setMap(map);
-                            directionsDisplay.setOptions({ suppressMarkers: true, preserveViewport: true, routeIndex: i });
+                //             var directionsDisplay = new google.maps.DirectionsRenderer();
+                //             directionsDisplay.setMap(map);
+                //             directionsDisplay.setOptions({ suppressMarkers: true, preserveViewport: true, routeIndex: i });
 
-                            directionsService.route(request, function (response, status) {
-                                if (status == google.maps.DirectionsStatus.OK) {
-                                    directionsDisplay.setDirections(response);
-                                }
-                            });
-                        });
-                    });
-                }
+                //             directionsService.route(request, function (response, status) {
+                //                 if (status == google.maps.DirectionsStatus.OK) {
+                //                     directionsDisplay.setDirections(response);
+                //                 }
+                //             });
+                //         });
+                //     });
+                // }
                 //function calcRoute() {
                 //    var directionsService = new google.maps.DirectionsService();
 
@@ -415,22 +258,25 @@
 
             };
 
-            function showAirPath () {
-                angular.forEach($scope.data.polyFlights, function(flightDetails) {
-                    vm.allFlights.push(
-                        new google.maps.Polyline(vm.polyFlightsOptions).setPath(getPath(flightDetails)));
+            function showMarkers () {
+                angular.forEach($scope.data.map.markers, function(ll) {
+                    vm.allMarkers.push(
+                        new google.maps.Marker({
+                            position: new google.maps.LatLng(ll.lat, ll.long),
+                            map: vm.map,
+                            title: ll.title,
+                            animation: 2
+                        })
+                    )
                 });
             };
 
-            function getPath (pathDetails) {
-                var path = [];
-
-                angular.forEach(pathDetails, function(ll) {
-                    path.push(new google.maps.LatLng(ll.lat, ll.long))
+            function showAirPath () {
+                angular.forEach($scope.data.map.airPath, function(flightDetails) {
+                    vm.allFlights.push(
+                        new google.maps.Polyline(vm.airPathOptions).setPath(getPath(flightDetails)));
                 });
-
-                return path;
-            }
+            };
 
             function showGroundPath () {
                 var poly_ground = {
@@ -446,18 +292,15 @@
 
             };
 
-            function showMarkers () {
-                angular.forEach($scope.data.markers, function(ll) {
-                    vm.allMarkers.push(
-                        new google.maps.Marker({
-                            position: new google.maps.LatLng(ll.lat, ll.long),
-                            map: vm.map,
-                            title: ll.title,
-                            animation: 2
-                        })
-                    )
+            function getPath (pathDetails) {
+                var path = [];
+
+                angular.forEach(pathDetails, function(ll) {
+                    path.push(new google.maps.LatLng(ll.lat, ll.long))
                 });
-            };
+
+                return path;
+            }
 
             function initSearchBox(input) {
                 var searchBox = new google.maps.places.SearchBox(input);

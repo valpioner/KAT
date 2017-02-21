@@ -7,16 +7,12 @@
 
     /*@ngInject*/
     function coreService($timeout, logService, alertService, cacheService){
-        var coreService = {
+        return coreService = {
             $timeout: $timeout,
             logger : logService,
             alert: alertService,
             cache : cacheService
-        };
-
-        
-
-        return coreService;
+        };        
     }
 
 })();
